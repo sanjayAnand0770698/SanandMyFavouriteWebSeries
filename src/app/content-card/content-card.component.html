@@ -1,0 +1,26 @@
+<div class="contentItem-card-wrapper" *ngIf="contentItem">
+  <div class="contentItem-title">
+    <header appHighlightImportantData>{{contentItem?.title }}</header>
+    <div>
+      <img class="contentItem-image" (click)="displayId()"
+        src="{{contentItem.imagelink ?contentItem.imagelink : defaultImagePath }}">
+    </div>
+    <div class="contentItem-body">
+      <strong>Body:</strong> <br>
+      {{contentItem?.body }}
+    </div>
+    <div class="contentItem-author" appHighlightImportantData>
+      <strong>Authors:</strong> {{ contentItem?.author }}
+    </div>
+
+  </div>
+  <div class="contentItem-type" appHighlightImportantData>
+    <strong>Type:</strong> {{ contentItem?.type }}
+  </div>
+  <div class="contentItem-tags" *ngIf="contentItem?.hashtags">
+    <h4>Tags:</h4>
+    <div *ngFor="let tag of contentItem?.hashtags">
+      <p appHighlightImportantData>{{ tag }}</p>
+    </div>
+  </div>
+</div>
