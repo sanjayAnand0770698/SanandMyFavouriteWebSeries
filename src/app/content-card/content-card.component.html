@@ -1,6 +1,6 @@
 <div class="contentItem-card-wrapper" *ngIf="contentItem">
   <div class="contentItem-title">
-    <header appHighlightImportantData>{{contentItem?.title }}</header>
+    <header appHighlightImportantData [colour]="titleColour" [isTitle]="true">{{contentItem?.title }}</header>
     <div>
       <img class="contentItem-image" (click)="displayId()"
         src="{{contentItem.imagelink ?contentItem.imagelink : defaultImagePath }}">
@@ -9,18 +9,18 @@
       <strong>Body:</strong> <br>
       {{contentItem?.body }}
     </div>
-    <div class="contentItem-author" appHighlightImportantData>
+    <div class="contentItem-author" appHighlightImportantData [isAuthor]="isLastItem">
       <strong>Authors:</strong> {{ contentItem?.author }}
     </div>
 
   </div>
-  <div class="contentItem-type" appHighlightImportantData>
+  <div class="contentItem-type" appHighlightImportantData [isType]="true">
     <strong>Type:</strong> {{ contentItem?.type }}
   </div>
   <div class="contentItem-tags" *ngIf="contentItem?.hashtags">
     <h4>Tags:</h4>
     <div *ngFor="let tag of contentItem?.hashtags">
-      <p appHighlightImportantData>{{ tag }}</p>
+      <p appHighlightImportantData [isTag]="true" [colour]="tagColour">{{ tag }}</p>
     </div>
   </div>
 </div>
