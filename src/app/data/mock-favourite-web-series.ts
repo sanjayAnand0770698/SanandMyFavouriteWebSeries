@@ -1,4 +1,6 @@
-export const FAVOURITE_WEB_SERIES = [{
+import { Content } from '../models/content';
+
+export const FAVOURITE_WEB_SERIES: Content[] = [{
   id: 0,
   title: "How i Met Your Mother",
   body: "How I Met Your Mother (often abbreviated as HIMYM) is an American sitcom, created by Craig Thomas and Carter Bays for CBS. The series, which aired from 2005 ...",
