@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Content } from '../models/content';
 import { FavouriteWebSeriesService } from '../favourite-web-series.service';
 @Component({
@@ -7,8 +7,9 @@ import { FavouriteWebSeriesService } from '../favourite-web-series.service';
   styleUrls: ['./content-list.component.scss']
 })
 export class ContentListComponent implements OnInit {
-  result?: string;
   seriesList: Content[] = [];
+  @Input() searchedItemId?: number;
+
   constructor(private favouriteWebSeriesService: FavouriteWebSeriesService) {
   }
 
@@ -16,28 +17,14 @@ export class ContentListComponent implements OnInit {
     this.getSeriesList();
   }
 
+  ngOnChanges() {
+    console.log(this.searchedItemId)
+
+  }
+
   getSeriesList(): void {
     this.favouriteWebSeriesService.getFavouriteWebSeriesList()
       .subscribe(seriesList => this.seriesList = seriesList);
-  }
-  titleFilter(input: string): any {
-    //console.log(input);
-    for (let i = 0; i <= 7; i++) {
-      // console.log(typeof(this.rockets[i].title));
-      console.log(this.seriesList[5].author);
-      console.log(i);
-      if (this.seriesList[i].author == input) {
-        console.log(i);
-        console.log(input);
-        this.result = 'Exist';
-        return this.result;
-        //console.log(true);
-      }
-      else {
-        this.result = 'Not Exist';
-        console.log(false);
-      }
-    }
   }
 
 }

@@ -1,2 +1,8 @@
-
-<app-content-list></app-content-list>
+<div class="search-box">
+  <p>Search Author by ID</p>
+  <input type="number" placeholder="Enter Author" #searchBox>
+  <button (click)=getFilteredWebSeries(searchBox.value)>Submit</button>
+  <p *ngIf="result == 'Not Exist'" class="not-Exist">{{ result }} </p>
+</div>
+<app-content-card [contentItem]="content" *ngIf="content"></app-content-card>
+<app-content-list [searchedItemId]="searchedItemId"></app-content-list>

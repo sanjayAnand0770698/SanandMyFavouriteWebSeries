@@ -21,16 +21,25 @@ export class FavouriteWebSeriesService {
     return finalList;
   }
 
-  getFavouriteWebSeriesContent(id: number): Content | undefined {
-    let contentItemIndex = FAVOURITE_WEB_SERIES.findIndex((data) => data.id = id);
+  getFavouriteWebSeriesContent(id: number): Observable<Content> {
+    let contentItemIndex = FAVOURITE_WEB_SERIES.findIndex((data) => data.id === id);
     if (contentItemIndex != -1) {
-      return FAVOURITE_WEB_SERIES[contentItemIndex];
-    } return;
+      return of(FAVOURITE_WEB_SERIES[contentItemIndex]);
+    } else {
+      let noContentItem = {
+        id: -1,
+        title: "No Content Found",
+        body: "",
+        author:
+          "No Author Found",
+      }
+      return of(noContentItem);
+    };
   }
 
   updateFavouriteWebSeries(content: Content): Observable<Content[]> {
 
-    let contentItemIndex = FAVOURITE_WEB_SERIES.findIndex((data) => data.id = content.id);
+    let contentItemIndex = FAVOURITE_WEB_SERIES.findIndex((data) => data.id === content.id);
     if (contentItemIndex != -1) {
       if (content.id)
         FAVOURITE_WEB_SERIES[contentItemIndex].id = content.id;
@@ -56,8 +65,8 @@ export class FavouriteWebSeriesService {
 
   }
 
-  removeFavouriteWebSeries(id: number): Content | undefined {
-    let contentItemIndex = FAVOURITE_WEB_SERIES.findIndex((data) => data.id = id);
+  removeFavouriteWebSeries(id: number) {
+    let contentItemIndex = FAVOURITE_WEB_SERIES.findIndex((data) => data.id === id);
     if (contentItemIndex != -1) {
       let contentItem = FAVOURITE_WEB_SERIES[contentItemIndex];
       FAVOURITE_WEB_SERIES.splice(0, contentItemIndex);
