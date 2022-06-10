@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Content } from '../models/content';
-import { FAVOURITE_WEB_SERIES } from '../data/mock-favourite-web-series';
+import { FavouriteWebSeriesService } from '../favourite-web-series.service';
 @Component({
   selector: 'app-content-list',
   templateUrl: './content-list.component.html',
@@ -8,13 +8,17 @@ import { FAVOURITE_WEB_SERIES } from '../data/mock-favourite-web-series';
 })
 export class ContentListComponent implements OnInit {
   result?: string;
-  seriesList: Content[];
-  constructor() {
-    this.seriesList = FAVOURITE_WEB_SERIES;
-
+  seriesList: Content[] = [];
+  constructor(private favouriteWebSeriesService: FavouriteWebSeriesService) {
   }
 
   ngOnInit(): void {
+    this.getSeriesList();
+  }
+
+  getSeriesList(): void {
+    this.favouriteWebSeriesService.getFavouriteWebSeriesList()
+      .subscribe(seriesList => this.seriesList = seriesList);
   }
   titleFilter(input: string): any {
     //console.log(input);
