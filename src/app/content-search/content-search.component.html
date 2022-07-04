@@ -1,1 +1,12 @@
-<p>content-search works!</p>
+<div class="search-box">
+  <p>Search Author by ID</p>
+  <input type="number" placeholder="Enter Author" #searchBox>
+  <button (click)=getFilteredWebSeries(searchBox.value)>Submit</button>
+  <p *ngIf="result == 'Not Exist'" class="not-Exist">{{ result }} </p>
+</div>
+<div *ngIf="content">
+  <app-content-card [contentItem]="content"></app-content-card>
+</div>
+<div *ngIf="!content" class="center">
+  <h3>Content Not Found</h3>
+</div>

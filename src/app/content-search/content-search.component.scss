@@ -1,0 +1,34 @@
+.search-box {
+  background-color: grey;
+  border: 1px solid blue;
+  width: 30%;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: auto;
+}
+
+.image-wrapper {
+  margin-top: 50px;
+  text-align: center;
+}
+
+img {
+  width: 200px;
+  display: block;
+  margin: 0 auto;
+}
+
+span {
+  background-color: chartreuse;
+  display: inline-block;
+}
+
+.center {
+  margin: 20px auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+  text-align: center;
+}
