@@ -23,6 +23,11 @@ const routes: Routes = [
     path: 'search',
     component: ContentSearchComponent,
   },
+  {
+    path: '404',
+    loadChildren: () => import('./page-not-found/page-not-found.module').then(m => m.PageNotFoundModule),
+  },
+  { path: '**', redirectTo: '404', pathMatch: 'full' }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes), CommonModule],

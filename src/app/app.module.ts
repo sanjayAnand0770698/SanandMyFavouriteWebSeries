@@ -11,6 +11,7 @@ import { HighlightImportantDataDirective } from './directives/highlight-importan
 import { ContentDetailComponent } from './content-detail/content-detail.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ContentSearchComponent } from './content-search/content-search.component';
+import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ContentSearchComponent } from './content-search/content-search.componen
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PageNotFoundModule
   ],
   providers: [],
   bootstrap: [AppComponent]
