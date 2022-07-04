@@ -8,6 +8,7 @@ import { ContentCardComponent } from './content-card/content-card.component';
 import { SeriesTypePipe } from './series-type.pipe';
 import { BorderPipePipe } from './border-pipe.pipe';
 import { HighlightImportantDataDirective } from './directives/highlight-important-data.directive';
+import { ContentDetailComponent } from './content-detail/content-detail.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HighlightImportantDataDirective } from './directives/highlight-importan
     ContentCardComponent,
     SeriesTypePipe,
     BorderPipePipe,
-    HighlightImportantDataDirective
+    HighlightImportantDataDirective,
+    ContentDetailComponent
   ],
   imports: [
     BrowserModule
