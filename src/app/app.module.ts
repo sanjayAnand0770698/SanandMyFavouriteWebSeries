@@ -10,6 +10,7 @@ import { BorderPipePipe } from './border-pipe.pipe';
 import { HighlightImportantDataDirective } from './directives/highlight-important-data.directive';
 import { ContentDetailComponent } from './content-detail/content-detail.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ContentSearchComponent } from './content-search/content-search.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AppRoutingModule } from './app-routing.module';
     SeriesTypePipe,
     BorderPipePipe,
     HighlightImportantDataDirective,
-    ContentDetailComponent
+    ContentDetailComponent,
+    ContentSearchComponent
   ],
   imports: [
     BrowserModule,
