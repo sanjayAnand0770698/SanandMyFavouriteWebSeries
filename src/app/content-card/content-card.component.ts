@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Content } from '../models/content';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class ContentCardComponent implements OnInit {
   defaultImagePath = "assets/default-image.png";
   titleColour = "#00FF00";
   tagColour = "#1e88e5";
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -22,5 +23,12 @@ export class ContentCardComponent implements OnInit {
 
   displayId(): void {
     console.log('Current id is: ', this.contentItem?.id, this.contentItem?.title);
+  }
+
+  goToDetailsPage() {
+    if (this.contentItem) {
+      let contentDetailRoute = '/detail/' + this.contentItem.id;
+      this.router.navigate([contentDetailRoute]);
+    }
   }
 }

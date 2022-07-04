@@ -1,6 +1,7 @@
 <div class="contentItem-card-wrapper" *ngIf="contentItem">
   <div class="contentItem-title">
-    <header appHighlightImportantData [colour]="titleColour" [isTitle]="true">{{contentItem?.title }}</header>
+    <header appHighlightImportantData [colour]="titleColour" [isTitle]="true" (click)="goToDetailsPage()">
+      {{contentItem?.title }}</header>
     <div>
       <img class="contentItem-image" (click)="displayId()"
         src="{{contentItem.imagelink ?contentItem.imagelink : defaultImagePath }}">
