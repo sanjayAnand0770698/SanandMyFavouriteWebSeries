@@ -1,21 +1,28 @@
 <div class="center">
-  <h2>Add Web Series Content</h2>
+  <h2 *ngIf="!isEdit">Add Web Series Content</h2>
+  <h2 *ngIf="isEdit">Update Web Series Content</h2>
 
   <form style="text-align: left;">
     <label for="title">Title</label>
-    <input type="text" id="title" name="title" #title placeholder="Title...">
+    <input type="text" id="title" name="title" #title placeholder="Title..."
+      value="{{content && content.title && isEdit ? content.title: '' }}">
 
     <label for="body">Body</label>
-    <input type="text" id="body" name="body" #body placeholder="Body...">
+    <input type="text" id="body" name="body" #body placeholder="Body..."
+      value="{{content && content.body && isEdit ? content.body: '' }}">
 
     <label for="author">Author</label>
-    <input type="text" id="author" name="author" #author placeholder="Author...">
+    <input type="text" id="author" name="author" #author placeholder="Author..."
+      value="{{content && content.author && isEdit ? content.author: '' }}">
 
     <label for="imagelink">ImageLink</label>
-    <input type="text" id="imagelink" name="imagelink" #imagelink placeholder="ImageLink...">
+    <input type="text" id="imagelink" name="imagelink" #imagelink placeholder="ImageLink..."
+      value="{{content && content.imagelink && isEdit ? content.imagelink: '' }}">
 
     <label for="type">Type</label>
-    <select id="type" name="type" #type>
+    <select id="type" name="type" #type
+      value="{{content && content.type != null && content.type!=undefined && isEdit ? content.type: '' }}">
+      <option value="">None</option>
       <option value="sitcom">Sitcom</option>
       <option value="comedy">Comedy</option>
       <option value="crime">Crime</option>
@@ -38,9 +45,13 @@
         </tr>
       </table>
     </div>
-    <button type="button" (click)="addContent(title.value,body.value,author.value,imagelink.value,type.value);
+    <button type="button" *ngIf="!isEdit" (click)="addContent(title.value,body.value,author.value,imagelink.value,type.value);
       title.value='';body.value = '';author.value = '';imagelink.value = '';type.value='';hashtag.value=''">
       Add Content
+    </button>
+    <button type="button" *ngIf="isEdit"
+      (click)="updateContent(title.value,body.value,author.value,imagelink.value,type.value);">
+      Update Content
     </button>
   </form>
 

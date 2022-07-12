@@ -20,7 +20,6 @@ export class HighlightImportantDataDirective {
     if (this.isTag) {
       this.el.nativeElement.style.backgroundColor = this.colour;
     }
-    console.log(this.isAuthor)
     if (this.isAuthor) {
       this.el.nativeElement.style.backgroundColor = "black";
       this.el.nativeElement.style.color = "white";

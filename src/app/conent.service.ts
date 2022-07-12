@@ -34,6 +34,12 @@ export class ContentService {
     );
   }
 
+  updateFavouriteWebSeries(content: Content): Observable<any> {
+    return this.http.put(this.contentUrl, content, this.httpOptions).pipe(
+      catchError(this.handleError<any>('updateFavouriteWebSeries'))
+    );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
