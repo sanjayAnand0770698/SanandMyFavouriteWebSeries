@@ -16,6 +16,7 @@ import { HeaderComponent } from './header/header.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ChangeContentComponent } from './change-content/change-content.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     HighlightImportantDataDirective,
     ContentDetailComponent,
     ContentSearchComponent,
-    HeaderComponent
+    HeaderComponent,
+    ChangeContentComponent
   ],
   imports: [
     BrowserModule,
