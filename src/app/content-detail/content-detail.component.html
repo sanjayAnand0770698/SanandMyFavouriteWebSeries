@@ -8,7 +8,7 @@
     <div *ngFor="let tag of content?.hashtags">
       <div class="tag">{{ tag }}</div>
     </div>
-    <button (click)="previousContent()" style=" background-color: red;" *ngIf="content.id > 0">Previous
+    <button (click)="previousContent()" style=" background-color: red;" *ngIf="content.id && content.id > 0">Previous
       Content</button>
     <button [routerLink]="'/list'">Go To Content List</button>
   </div>

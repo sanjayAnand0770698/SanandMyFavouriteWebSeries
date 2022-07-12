@@ -26,7 +26,7 @@ export class ContentDetailComponent implements OnInit {
   }
 
   previousContent() {
-    if (this.content && this.content.id > 0) {
+    if (this.content && this.content.id && this.content.id > 0) {
       let id = this.content.id - 1;
       let contentDetailRoute = '/detail/' + id;
       this.router.navigate([contentDetailRoute]);
