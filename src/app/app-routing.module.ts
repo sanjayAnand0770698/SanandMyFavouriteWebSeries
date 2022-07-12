@@ -29,6 +29,10 @@ const routes: Routes = [
     component: ChangeContentComponent,
   },
   {
+    path: 'updateContent/:id',
+    component: ChangeContentComponent,
+  },
+  {
     path: '404',
     loadChildren: () => import('./page-not-found/page-not-found.module').then(m => m.PageNotFoundModule),
   },
