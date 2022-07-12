@@ -25,6 +25,10 @@ export class ContentDetailComponent implements OnInit {
     });
   }
 
+  updateContent(contentId: number) {
+    this.router.navigate(['/updateContent/' + contentId]);
+  }
+
   getContentDetials(contentId: string) {
     this.contentService.getFavouriteWebSeriesContent(parseInt(contentId)).subscribe({
       next: (resp) => { this.content = resp; },

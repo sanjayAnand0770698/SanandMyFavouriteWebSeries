@@ -1,6 +1,7 @@
 <div class="card" *ngIf="content">
   <img src="{{content.imagelink ?content.imagelink : defaultImagePath }}" alt="content">
   <div class="container">
+    <h3> <b>ID: {{content.id}}</b></h3>
     <h4> <b>Title: {{content.title}}</b></h4>
     <p><b>Body:</b> {{content.body}}</p>
     <b>Author:</b>
@@ -13,5 +14,7 @@
     <button (click)="previousContent()" style=" background-color: red;" *ngIf="content.id && content.id > 0">Previous
       Content</button>
     <button [routerLink]="'/list'">Go To Content List</button>
+    <button *ngIf="content.id" (click)="updateContent(content.id)" style="background-color: rgb(26, 50, 209);">Update
+      Content</button>
   </div>
 </div>
