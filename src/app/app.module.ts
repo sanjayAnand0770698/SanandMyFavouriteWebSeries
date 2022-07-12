@@ -12,6 +12,7 @@ import { ContentDetailComponent } from './content-detail/content-detail.componen
 import { AppRoutingModule } from './app-routing.module';
 import { ContentSearchComponent } from './content-search/content-search.component';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PageNotFoundModule } from './page-not-found/page-not-found.module';
     BorderPipePipe,
     HighlightImportantDataDirective,
     ContentDetailComponent,
-    ContentSearchComponent
+    ContentSearchComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
