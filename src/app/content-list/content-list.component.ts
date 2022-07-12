@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Content } from '../models/content';
-import { FavouriteWebSeriesService } from '../favourite-web-series.service';
+import { ContentService } from '../conent.service';
 @Component({
   selector: 'app-content-list',
   templateUrl: './content-list.component.html',
@@ -10,21 +10,18 @@ export class ContentListComponent implements OnInit {
   seriesList: Content[] = [];
   @Input() searchedItemId?: number;
 
-  constructor(private favouriteWebSeriesService: FavouriteWebSeriesService) {
+  constructor(private contentService: ContentService) {
   }
 
   ngOnInit(): void {
     this.getSeriesList();
   }
 
-  ngOnChanges() {
-    console.log(this.searchedItemId)
-
-  }
-
   getSeriesList(): void {
-    this.favouriteWebSeriesService.getFavouriteWebSeriesList()
-      .subscribe(seriesList => this.seriesList = seriesList);
+    this.contentService.getFavouriteWebSeriesList().subscribe({
+      next: (resp) => { this.seriesList = resp; },
+      error: (err) => { this.seriesList = [] }
+    });
   }
 
 }

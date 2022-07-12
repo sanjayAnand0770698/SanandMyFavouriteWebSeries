@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FavouriteWebSeriesService } from '../favourite-web-series.service';
+import { ContentService } from '../conent.service';
 import { Content } from '../models/content';
 
 @Component({
@@ -12,16 +12,21 @@ export class ContentDetailComponent implements OnInit {
   content?: Content;
   defaultImagePath = "assets/default-image.png";
 
-  constructor(private route: ActivatedRoute, private favouriteWebSeriesService: FavouriteWebSeriesService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private contentService: ContentService, private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       let contentId = params['id'];
-      console.log(contentId)
-      this.favouriteWebSeriesService.getFavouriteWebSeriesContent(parseInt(contentId))
-        .subscribe(content => {
-          this.content = content;
-        });
+      if (contentId) {
+        this.getContentDetials(contentId)
+      }
+    });
+  }
+
+  getContentDetials(contentId: string) {
+    this.contentService.getFavouriteWebSeriesContent(parseInt(contentId)).subscribe({
+      next: (resp) => { this.content = resp; },
+      error: (err) => { this.content = undefined }
     });
   }
 

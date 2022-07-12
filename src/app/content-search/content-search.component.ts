@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FavouriteWebSeriesService } from '../favourite-web-series.service';
+import { ContentService } from '../conent.service';
 import { Content } from '../models/content';
 @Component({
   selector: 'app-content-search',
@@ -11,21 +11,17 @@ export class ContentSearchComponent implements OnInit {
   result?: string;
   content?: Content;
   isUserTyped: boolean = false;
-  constructor(private favouriteWebSeriesService: FavouriteWebSeriesService) { }
+  constructor(private contentService: ContentService) { }
 
   ngOnInit(): void {
   }
 
   getFilteredWebSeries(id: string): void {
     if (id) {
-      this.favouriteWebSeriesService.getFavouriteWebSeriesContent(parseInt(id))
-        .subscribe(content => {
-          if (content.id !== -1) {
-            this.content = content;
-          } else {
-            this.content = undefined;
-          }
-        });
+      this.contentService.getFavouriteWebSeriesContent(parseInt(id)).subscribe({
+        next: (resp) => { this.content = resp; },
+        error: (err) => { this.content = undefined }
+      });
     } else {
       alert("Please Enter id to filter content");
     }

@@ -6,7 +6,7 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 })
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    const FAVOURITE_WEB_SERIES = [{
+    const webseries = [{
       id: 0,
       title: "How i Met Your Mother",
       body: "How I Met Your Mother (often abbreviated as HIMYM) is an American sitcom, created by Craig Thomas and Carter Bays for CBS. The series, which aired from 2005 ...",
@@ -69,6 +69,6 @@ export class InMemoryDataService implements InMemoryDbService {
       type: "crime",
       hashtags: ["JoeGoldberg", "LoveQuinn"]
     }];
-    return { FAVOURITE_WEB_SERIES };
+    return { webseries };
   }
 }
