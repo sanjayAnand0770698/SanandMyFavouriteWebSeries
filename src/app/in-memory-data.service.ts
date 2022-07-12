@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
+import { Content } from './models/content';
 
 @Injectable({
   providedIn: 'root',
@@ -70,5 +71,13 @@ export class InMemoryDataService implements InMemoryDbService {
       hashtags: ["JoeGoldberg", "LoveQuinn"]
     }];
     return { webseries };
+  }
+
+  genId(webseries: Content[]): number {
+    const ids: any = [];
+    webseries.forEach((data) => {
+      ids.push(data.id)
+    });
+    return webseries.length > 0 ? Math.max(...ids) + 1 : 11;
   }
 }

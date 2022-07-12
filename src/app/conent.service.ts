@@ -11,7 +11,9 @@ export class ContentService {
   constructor(private http: HttpClient) { }
 
   private contentUrl = 'api/webseries';  // URL to web api
-
+  private httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
   getFavouriteWebSeriesList(): Observable<Content[]> {
     return this.http.get<Content[]>(this.contentUrl)
       .pipe(
@@ -23,6 +25,12 @@ export class ContentService {
     const url = `${this.contentUrl}/${id}`;
     return this.http.get<Content>(url).pipe(
       catchError(this.handleError<Content>(`Content id=${id}`))
+    );
+  }
+
+  addFavouriteWebSeries(content: Content): Observable<Content> {
+    return this.http.post<Content>(this.contentUrl, content, this.httpOptions).pipe(
+      catchError(this.handleError<Content>('addFavouriteWebSeries'))
     );
   }
 

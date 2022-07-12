@@ -17,8 +17,10 @@ export class ContentDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       let contentId = params['id'];
-      if (contentId) {
+      if (contentId && contentId != "null") {
         this.getContentDetials(contentId)
+      } else {
+        this.router.navigate(['/list']);
       }
     });
   }
