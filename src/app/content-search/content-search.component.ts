@@ -8,7 +8,6 @@ import { Content } from '../models/content';
 })
 export class ContentSearchComponent implements OnInit {
   title = 'SanandMyFavouriteWebSeries';
-  result?: string;
   content?: Content;
   isUserTyped: boolean = false;
   constructor(private contentService: ContentService) { }
@@ -18,6 +17,7 @@ export class ContentSearchComponent implements OnInit {
 
   getFilteredWebSeries(id: string): void {
     if (id) {
+      this.isUserTyped = true;
       this.contentService.getFavouriteWebSeriesContent(parseInt(id)).subscribe({
         next: (resp) => { this.content = resp; },
         error: (err) => { this.content = undefined }

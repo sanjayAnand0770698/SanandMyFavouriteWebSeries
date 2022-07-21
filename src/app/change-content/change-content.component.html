@@ -1,72 +1,78 @@
-<div class="center">
-  <h2 *ngIf="!isEdit">Add Web Series Content</h2>
-  <h2 *ngIf="isEdit">Update Web Series Content</h2>
+<form>
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title *ngIf="!isEdit">Add Web Series Content</mat-card-title>
+      <mat-card-title *ngIf="isEdit">Add Web Series Content</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Title</mat-label>
+        <input matInput type="text" id="title" name="title" #title placeholder="Title..."
+          value="{{content && content.title && isEdit ? content.title: '' }}">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Body</mat-label>
+        <input type="text" matInput id="body" name="body" #body placeholder="Body..."
+          value="{{content && content.body && isEdit ? content.body: '' }}">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Author</mat-label>
+        <input type="text" matInput id="author" name="author" #author placeholder="Author..."
+          value="{{content && content.author && isEdit ? content.author: '' }}">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>ImageLink</mat-label>
+        <input type="text" matInput id="imagelink" name="imagelink" #imagelink placeholder="ImageLink..."
+          value="{{content && content.imagelink && isEdit ? content.imagelink: '' }}">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Type</mat-label>
+        <select matNativeControl id="type" name="type" #type
+          value="{{content && content.type != null && content.type!=undefined && isEdit ? content.type: '' }}">
+          <option value="">None</option>
+          <option value="sitcom">Sitcom</option>
+          <option value="comedy">Comedy</option>
+          <option value="crime">Crime</option>
+        </select>
+      </mat-form-field>
 
-  <form style="text-align: left;">
-    <mat-form-field appearance="fill" class="full-width">
-      <mat-label>Title</mat-label>
-      <input matInput type="text" id="title" name="title" #title placeholder="Title..."
-        value="{{content && content.title && isEdit ? content.title: '' }}">
-    </mat-form-field>
-    <mat-form-field appearance="fill" class="full-width">
-      <mat-label>Body</mat-label>
-      <input type="text" matInput id="body" name="body" #body placeholder="Body..."
-        value="{{content && content.body && isEdit ? content.body: '' }}">
-    </mat-form-field>
-    <mat-form-field appearance="fill" class="full-width">
-      <mat-label>Author</mat-label>
-      <input type="text" matInput id="author" name="author" #author placeholder="Author..."
-        value="{{content && content.author && isEdit ? content.author: '' }}">
-    </mat-form-field>
-    <mat-form-field appearance="fill" class="full-width">
-      <mat-label>ImageLink</mat-label>
-      <input type="text" matInput id="imagelink" name="imagelink" #imagelink placeholder="ImageLink..."
-        value="{{content && content.imagelink && isEdit ? content.imagelink: '' }}">
-    </mat-form-field>
-    <mat-form-field appearance="fill" class="full-width">
-      <mat-label>Type</mat-label>
-      <select matNativeControl id="type" name="type" #type
-        value="{{content && content.type != null && content.type!=undefined && isEdit ? content.type: '' }}">
-        <option value="">None</option>
-        <option value="sitcom">Sitcom</option>
-        <option value="comedy">Comedy</option>
-        <option value="crime">Crime</option>
-      </select>
-    </mat-form-field>
-
-    <h2>Hashtags</h2>
-    <div style="padding: 5px;">
-      <div style="display:flex;justify-content: space-between; ">
-        <mat-form-field appearance="fill" class="full-width">
-          <mat-label style="margin-right: 10px;">Add Hashtag</mat-label>
-          <input matInput type="text" id="hastag" name="hastag" #hashtag placeholder="Hashtag...">
-        </mat-form-field>
-        <button mat-mini-fab color="warn" aria-label="add" (click)="addHashTag(hashtag.value);">
-          <mat-icon>add</mat-icon>
-        </button>
+      <h2>Hashtags</h2>
+      <div style="padding: 5px;">
+        <div style="display:flex;justify-content: space-between; ">
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label style="margin-right: 10px;">Add Hashtag</mat-label>
+            <input matInput type="text" id="hastag" name="hastag" #hashtag placeholder="Hashtag...">
+          </mat-form-field>
+          <button mat-mini-fab color="warn" aria-label="add" (click)="addHashTag(hashtag.value);">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+        <table id="hashtag-table" *ngIf="hashtags.length>0">
+          <tr>
+            <th>Hashtag</th>
+            <th>Remove</th>
+          </tr>
+          <tr *ngFor="let hashtag of hashtags">
+            <th>{{hashtag}}</th>
+            <th>
+              <button mat-mini-fab color="accent" aria-label="remove" (click)="removeHashTag(hashtag);">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </th>
+          </tr>
+        </table>
       </div>
-      <table id="hashtag-table" *ngIf="hashtags.length>0">
-        <tr>
-          <th>Hashtag</th>
-          <th>Remove</th>
-        </tr>
-        <tr *ngFor="let hashtag of hashtags">
-          <th>{{hashtag}}</th>
-          <th>
-            <button mat-mini-fab color="accent" aria-label="remove" (click)="removeHashTag(hashtag);">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </th>
-        </tr>
-      </table>
-    </div>
-    <button type="button" class="full-width" mat-raised-button color="accent" *ngIf="!isEdit" (click)="addContent(title.value,body.value,author.value,imagelink.value,type.value);
-              title.value='';body.value = '';author.value = '';imagelink.value = '';type.value='';hashtag.value=''">
-      Add Content
-    </button>
-    <button type="button" class="full-width" mat-raised-button color="accent" *ngIf="isEdit"
-      (click)="updateContent(title.value,body.value,author.value,imagelink.value,type.value);">
-      Update Content
-    </button>
-  </form>
-</div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button type="button" class="full-width" mat-raised-button color="accent" *ngIf="!isEdit"
+        (click)="addContent(title.value,body.value,author.value,imagelink.value,type.value);
+                          title.value='';body.value = '';author.value = '';imagelink.value = '';type.value='';hashtag.value=''">
+        Add Content
+      </button>
+      <button type="button" class="full-width" mat-raised-button color="accent" *ngIf="isEdit"
+        (click)="updateContent(title.value,body.value,author.value,imagelink.value,type.value);">
+        Update Content
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

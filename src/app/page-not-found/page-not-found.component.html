@@ -1,5 +1,13 @@
-<div class="center">
-  <h2>Page Not Found</h2>
-  <p>The page you looking for doesn't exsist or some error occured</p>
-  <button [routerLink]="'/list'" mat-raised-button color="accent">Go Back</button>
-</div>
+<mat-card class="card" style="text-align: center;">
+  <mat-card-header>
+    <mat-card-title>Page Not Found</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p style="margin-top:30px">
+      The page you looking for doesn't exsist or some error occured
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button [routerLink]="'/list'" mat-raised-button color="accent">Go Back</button>
+  </mat-card-actions>
+</mat-card>

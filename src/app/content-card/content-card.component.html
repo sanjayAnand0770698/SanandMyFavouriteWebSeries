@@ -1,19 +1,20 @@
-<div class="contentItem-card-wrapper" *ngIf="contentItem">
-  <div class="contentItem-title">
-    <header appHighlightImportantData [colour]="titleColour" [isTitle]="true" (click)="goToDetailsPage()">
-      {{contentItem?.title }}</header>
-    <div>
-      <img class="contentItem-image" (click)="displayId()"
-        src="{{contentItem.imagelink ?contentItem.imagelink : defaultImagePath }}">
+<mat-card class="card content-card" *ngIf="contentItem">
+  <mat-card-header>
+    <mat-card-title appHighlightImportantData [colour]="titleColour" [isTitle]="true" (click)="goToDetailsPage()">Shiba
+      {{contentItem?.title }}
+    </mat-card-title>
+  </mat-card-header>
+  <img mat-card-image (click)="displayId()" src="{{contentItem.imagelink ?contentItem.imagelink : defaultImagePath }}"
+    alt="thumbnail">
+  <mat-card-content>
+    <div appHighlightImportantData [isType]="true">
+      <strong>Type:</strong> {{ contentItem?.type }}
     </div>
-  </div>
-  <div class="contentItem-type" appHighlightImportantData [isType]="true">
-    <strong>Type:</strong> {{ contentItem?.type }}
-  </div>
-  <div class="contentItem-tags" *ngIf="contentItem?.hashtags">
-    <h4>Tags:</h4>
-    <div *ngFor="let tag of contentItem?.hashtags">
-      <p appHighlightImportantData [isTag]="true" [colour]="tagColour">{{ tag }}</p>
+    <div *ngIf="contentItem?.hashtags" style="margin-top: 20px;">
+      <h3><strong>Tags:</strong> </h3>
+      <div *ngFor="let tag of contentItem?.hashtags">
+        <button mat-raised-button color="primary" style="margin: 5px;">{{ tag }}</button>
+      </div>
     </div>
-  </div>
-</div>
+  </mat-card-content>
+</mat-card>
