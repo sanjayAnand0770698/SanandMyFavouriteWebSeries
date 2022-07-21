@@ -9,9 +9,11 @@
     <p class="author"> {{content.author}}</p>
     <h3 *ngIf="content.type"><b>Type:</b> {{content.type}}</h3>
     <label><b>Hashtags:</b></label>
-    <div *ngFor="let tag of content?.hashtags">
-      <div class="tag">{{ tag }}</div>
-    </div>
+    <mat-chip-list cdkDropList cdkDropListOrientation="horizontal">
+      <mat-chip cdkDrag *ngFor="let tag of content?.hashtags">
+        {{ tag }}
+      </mat-chip>
+    </mat-chip-list>
   </mat-card-content>
   <mat-card-actions>
     <button (click)="previousContent()" mat-raised-button color="accent" style=" background-color: red;"

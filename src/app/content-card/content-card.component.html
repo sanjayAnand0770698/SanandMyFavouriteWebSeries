@@ -12,9 +12,11 @@
     </div>
     <div *ngIf="contentItem?.hashtags" style="margin-top: 20px;">
       <h3><strong>Tags:</strong> </h3>
-      <div *ngFor="let tag of contentItem?.hashtags">
-        <button mat-raised-button color="primary" style="margin: 5px;">{{ tag }}</button>
-      </div>
+      <mat-chip-list cdkDropList cdkDropListOrientation="horizontal">
+        <mat-chip cdkDrag *ngFor="let tag of contentItem?.hashtags">
+          {{ tag }}
+        </mat-chip>
+      </mat-chip-list>
     </div>
   </mat-card-content>
 </mat-card>
