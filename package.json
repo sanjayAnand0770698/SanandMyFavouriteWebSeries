@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "http-server -p 8080 -c-1 dist/sanand-my-favourite-web-series",
+    "start": "http-server -p 8080 -c-1 dist/sanjayanand-my-favourite-web-series",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
